@@ -1,8 +1,10 @@
 import React from "react";
 // UI frameworks
 import { Layout, Menu } from "antd";
-import { MenuUnfoldOutlined } from "@ant-design/icons";
-import { Route, Routes, useNavigate } from "react-router";
+import { MenuUnfoldOutlined, HeartFilled } from "@ant-design/icons";
+import { Route, Routes } from "react-router";
+// Hooks
+import { useNavigate, useLocation } from "react-router";
 // Pages
 import DropDown from "./page/DropDown";
 import Paginations from "./page/Paginations";
@@ -12,35 +14,35 @@ import "./app-style.css";
 
 const menuItems = [
   {
-    key: "DROP_DOWN",
+    key: "drop-down",
     label: "Drop down",
     theme: "light",
     icon: <MenuUnfoldOutlined />,
   },
   {
-    key: "STEPS",
+    key: "steps",
     label: "Steps",
   },
   {
-    key: "PAGINATION",
+    key: "paginations",
     label: "Pagination",
   },
 ];
 const App = () => {
   const navigate = useNavigate();
-
+  const { pathname } = useLocation();
   // const [collapsed, setCollapsed] = React.useState(false);
 
   function handleClickItem(event) {
     const { key } = event;
     switch (key) {
-      case "DROP_DOWN":
+      case "drop-down":
         navigate("/drop-down");
         break;
-      case "PAGINATION":
+      case "paginations":
         navigate("/paginations");
         break;
-      case "STEPS":
+      case "steps":
         navigate("/steps");
         break;
       default:
@@ -78,7 +80,7 @@ const App = () => {
         </Layout>
       </Layout> */}
 
-      <Layout.Header>
+      {/* <Layout.Header>
         <Menu
           items={menuItems}
           mode="horizontal"
@@ -94,7 +96,31 @@ const App = () => {
           <Route path="/steps" element={<Steps />} />
         </Routes>
       </Layout.Content>
-      <Layout.Footer>footer</Layout.Footer>
+      <Layout.Footer>footer</Layout.Footer> */}
+      <Layout.Header style={{ color: "#fff", textAlign: "center" }}>
+        My Awesome website
+      </Layout.Header>
+      <Layout>
+        <Layout.Sider>
+          <Menu
+            items={menuItems}
+            theme="dark"
+            onClick={handleClickItem}
+            defaultSelectedKeys={[pathname.slice(1)]}
+          />
+        </Layout.Sider>
+        <Layout.Content style={{ padding: 10 }}>
+          <Routes>
+            <Route path="/drop-down" element={<DropDown />} />
+            <Route path="/paginations" element={<Paginations />} />
+            <Route path="/steps" element={<Steps />} />
+          </Routes>
+        </Layout.Content>
+      </Layout>
+      <Layout.Footer>
+        This website is powered by <HeartFilled style={{ color: "pink" }} />{" "}
+        <span>&copy;</span> 2022
+      </Layout.Footer>
     </Layout>
   );
 };
