@@ -3,6 +3,8 @@ import React from "react";
 import { Layout, Menu } from "antd";
 import { MenuUnfoldOutlined, HeartFilled } from "@ant-design/icons";
 import { Route, Routes } from "react-router";
+// Components
+import BreadCrumbs from "./components/BreadCrumbs";
 // Hooks
 import { useNavigate, useLocation } from "react-router";
 // Pages
@@ -110,6 +112,7 @@ const App = () => {
           />
         </Layout.Sider>
         <Layout.Content style={{ padding: 10 }}>
+          <BreadCrumbs />
           <Routes>
             <Route path="/drop-down" element={<DropDown />} />
             <Route path="/paginations" element={<Paginations />} />
