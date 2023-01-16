@@ -1,12 +1,14 @@
 import React from "react";
 // UI frameworks
-import { Button, Layout, Menu } from "antd";
+import { Layout, Menu } from "antd";
 import { MenuUnfoldOutlined } from "@ant-design/icons";
 import { Route, Routes, useNavigate } from "react-router";
 // Pages
 import DropDown from "./page/DropDown";
 import Paginations from "./page/Paginations";
 import Steps from "./page/Steps";
+// Styles
+import "./app-style.css";
 
 const menuItems = [
   {
@@ -52,7 +54,7 @@ const App = () => {
   // }
 
   return (
-    <Layout>
+    <Layout className="app-layout">
       {/* <Layout style={{ height: "100vh" }}>
         <Layout.Header style={{ background: "green" }}>header</Layout.Header>
         <Layout.Content style={{ background: "blue" }}>content</Layout.Content>
