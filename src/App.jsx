@@ -13,9 +13,10 @@ import Paginations from "./page/Paginations";
 import Steps from "./page/Steps";
 import Divider from "./page/Divider";
 import ListWithPagination from "./page/ListWithPagination";
+import AutoComplete from "./page/AutoComplete";
+import CheckBox from "./page/CheckBox";
 // Styles
 import "./app-style.css";
-import AutoComplete from "./page/AutoComplete";
 
 const menuItems = [
   {
@@ -44,6 +45,10 @@ const menuItems = [
     key: "autoComplete",
     label: "Auto Complete",
   },
+  {
+    key: "checkbox",
+    label: "Checkbox",
+  },
 ];
 const App = () => {
   const navigate = useNavigate();
@@ -70,6 +75,9 @@ const App = () => {
         break;
       case "autoComplete":
         navigate("/auto-complete");
+        break;
+      case "checkbox":
+        navigate("/checkbox");
         break;
       default:
         break;
@@ -143,6 +151,7 @@ const App = () => {
             <Route path="/steps" element={<Steps />} />
             <Route path="/divider" element={<Divider />} />
             <Route path="/auto-complete" element={<AutoComplete />} />
+            <Route path="/checkbox" element={<CheckBox />} />
             <Route
               path="/list-with-pagination"
               element={<ListWithPagination />}
