@@ -12,9 +12,10 @@ import DropDown from "./page/DropDown";
 import Paginations from "./page/Paginations";
 import Steps from "./page/Steps";
 import Divider from "./page/Divider";
+import ListWithPagination from "./page/ListWithPagination";
 // Styles
 import "./app-style.css";
-import ListWithPagination from "./page/ListWithPagination";
+import AutoComplete from "./page/AutoComplete";
 
 const menuItems = [
   {
@@ -39,6 +40,10 @@ const menuItems = [
     key: "listWithPagination",
     label: "List with pagination",
   },
+  {
+    key: "autoComplete",
+    label: "Auto Complete",
+  },
 ];
 const App = () => {
   const navigate = useNavigate();
@@ -62,6 +67,9 @@ const App = () => {
         break;
       case "listWithPagination":
         navigate("/list-with-pagination");
+        break;
+      case "autoComplete":
+        navigate("/auto-complete");
         break;
       default:
         break;
@@ -134,6 +142,7 @@ const App = () => {
             <Route path="/paginations" element={<Paginations />} />
             <Route path="/steps" element={<Steps />} />
             <Route path="/divider" element={<Divider />} />
+            <Route path="/auto-complete" element={<AutoComplete />} />
             <Route
               path="/list-with-pagination"
               element={<ListWithPagination />}
