@@ -14,6 +14,7 @@ import Steps from "./page/Steps";
 import Divider from "./page/Divider";
 // Styles
 import "./app-style.css";
+import ListWithPagination from "./page/ListWithPagination";
 
 const menuItems = [
   {
@@ -33,6 +34,10 @@ const menuItems = [
   {
     key: "divider",
     label: "divider",
+  },
+  {
+    key: "listWithPagination",
+    label: "List with pagination",
   },
 ];
 const App = () => {
@@ -54,6 +59,9 @@ const App = () => {
         break;
       case "divider":
         navigate("/divider");
+        break;
+      case "listWithPagination":
+        navigate("/list-with-pagination");
         break;
       default:
         break;
@@ -126,6 +134,10 @@ const App = () => {
             <Route path="/paginations" element={<Paginations />} />
             <Route path="/steps" element={<Steps />} />
             <Route path="/divider" element={<Divider />} />
+            <Route
+              path="/list-with-pagination"
+              element={<ListWithPagination />}
+            />
           </Routes>
         </Layout.Content>
       </Layout>
