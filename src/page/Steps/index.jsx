@@ -4,7 +4,7 @@ import { HeartFilled } from "@ant-design/icons";
 
 const items = [
   {
-    title: "Step1",
+    title: "steps1",
     subTitle: "sub1",
     description: "desc1",
     // icon: <HeartFilled />,

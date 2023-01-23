@@ -11,6 +11,7 @@ import { useNavigate, useLocation } from "react-router";
 import DropDown from "./page/DropDown";
 import Paginations from "./page/Paginations";
 import Steps from "./page/Steps";
+import Divider from "./page/Divider";
 // Styles
 import "./app-style.css";
 
@@ -29,6 +30,10 @@ const menuItems = [
     key: "paginations",
     label: "Pagination",
   },
+  {
+    key: "divider",
+    label: "divider",
+  },
 ];
 const App = () => {
   const navigate = useNavigate();
@@ -46,6 +51,9 @@ const App = () => {
         break;
       case "steps":
         navigate("/steps");
+        break;
+      case "divider":
+        navigate("/divider");
         break;
       default:
         break;
@@ -117,6 +125,7 @@ const App = () => {
             <Route path="/drop-down" element={<DropDown />} />
             <Route path="/paginations" element={<Paginations />} />
             <Route path="/steps" element={<Steps />} />
+            <Route path="/divider" element={<Divider />} />
           </Routes>
         </Layout.Content>
       </Layout>
