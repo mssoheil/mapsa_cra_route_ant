@@ -1,6 +1,6 @@
 import React from "react";
 // UI frameworks
-import { Layout, Menu } from "antd";
+import { Layout, Menu, Spin } from "antd";
 import { MenuUnfoldOutlined, HeartFilled } from "@ant-design/icons";
 import { Route, Routes } from "react-router";
 // Components
@@ -17,6 +17,13 @@ import AutoComplete from "./page/AutoComplete";
 import CheckBox from "./page/CheckBox";
 // Styles
 import "./app-style.css";
+// import CodeSplitting from "./page/CodeSplitting";
+const CodeSplitting = React.lazy(async () => {
+  const module = await import("./page/CodeSplitting");
+  console.log("🚀 ~ file: App.jsx:23 ~ CodeSplitting ~ module", module)
+  return module
+})
+
 
 const menuItems = [
   {
@@ -49,11 +56,16 @@ const menuItems = [
     key: "checkbox",
     label: "Checkbox",
   },
+  {
+    key: "codeSplitting",
+    label: "Code Splitting",
+  },
 ];
 const App = () => {
   const navigate = useNavigate();
   const { pathname } = useLocation();
   // const [collapsed, setCollapsed] = React.useState(false);
+
 
   function handleClickItem(event) {
     const { key } = event;
@@ -78,6 +90,9 @@ const App = () => {
         break;
       case "checkbox":
         navigate("/checkbox");
+        break;
+      case "codeSplitting":
+        navigate("/code-splitting");
         break;
       default:
         break;
@@ -145,18 +160,22 @@ const App = () => {
         </Layout.Sider>
         <Layout.Content style={{ padding: 10 }}>
           <BreadCrumbs />
-          <Routes>
-            <Route path="/drop-down" element={<DropDown />} />
-            <Route path="/paginations" element={<Paginations />} />
-            <Route path="/steps" element={<Steps />} />
-            <Route path="/divider" element={<Divider />} />
-            <Route path="/auto-complete" element={<AutoComplete />} />
-            <Route path="/checkbox" element={<CheckBox />} />
-            <Route
-              path="/list-with-pagination"
-              element={<ListWithPagination />}
-            />
-          </Routes>
+          <React.Suspense fallback={<div><Spin /> loading...</div>}>
+            <Routes>
+              <Route path="/drop-down" element={<DropDown />} />
+              <Route path="/paginations" element={<Paginations />} />
+              <Route path="/steps" element={<Steps />} />
+              <Route path="/divider" element={<Divider />} />
+              <Route path="/auto-complete" element={<AutoComplete />} />
+              <Route path="/checkbox" element={<CheckBox />} />
+              <Route path="/code-splitting" element={<CodeSplitting />} />
+              <Route
+                path="/list-with-pagination"
+                element={<ListWithPagination />}
+              />
+            </Routes>
+
+          </React.Suspense>
         </Layout.Content>
       </Layout>
       <Layout.Footer>
