@@ -5,6 +5,8 @@ import { MenuUnfoldOutlined, HeartFilled } from "@ant-design/icons";
 import { Route, Routes } from "react-router";
 // Components
 import BreadCrumbs from "./components/BreadCrumbs";
+// Utilities
+import { Provider } from "react-redux";
 // Hooks
 import { useNavigate, useLocation } from "react-router";
 // Pages
@@ -15,9 +17,14 @@ import Divider from "./page/Divider";
 import ListWithPagination from "./page/ListWithPagination";
 import AutoComplete from "./page/AutoComplete";
 import CheckBox from "./page/CheckBox";
+import Users from "./page/Users";
 // Styles
 import "./app-style.css";
+// Store
+import rootStore from "./store";
+
 // import CodeSplitting from "./page/CodeSplitting";
+
 const CodeSplitting = React.lazy(async () => {
   const module = await import("./page/CodeSplitting");
   console.log("🚀 ~ file: App.jsx:23 ~ CodeSplitting ~ module", module)
@@ -60,6 +67,10 @@ const menuItems = [
     key: "codeSplitting",
     label: "Code Splitting",
   },
+  {
+    key: "users",
+    label: "Users",
+  },
 ];
 const App = () => {
   const navigate = useNavigate();
@@ -94,6 +105,9 @@ const App = () => {
       case "codeSplitting":
         navigate("/code-splitting");
         break;
+      case "users":
+        navigate("/users");
+        break;
       default:
         break;
     }
@@ -105,84 +119,88 @@ const App = () => {
   // }
 
   return (
-    <Layout className="app-layout">
-      {/* <Layout style={{ height: "100vh" }}>
-        <Layout.Header style={{ background: "green" }}>header</Layout.Header>
-        <Layout.Content style={{ background: "blue" }}>content</Layout.Content>
-        <Layout.Footer style={{ background: "red" }}>footer</Layout.Footer>
+    <Provider store={rootStore}>
 
-        <Layout.Sider
-          collapsible
-          collapsed={collapsed}
-          style={{ background: "blue" }}
-          trigger={<span>close</span>}
-        >
-          sider
-        </Layout.Sider>
-        <Layout>
-          <Layout.Header style={{ background: "green" }}>
-            header
-            <Button onClick={handleToggleCollapse}>Toggle Collapse</Button>
-          </Layout.Header>
-          <Layout.Content style={{ background: "red" }}>content</Layout.Content>
-          <Layout.Footer style={{ background: "orange" }}>footer</Layout.Footer>
-        </Layout>
-      </Layout> */}
+      <Layout className="app-layout">
+        {/* <Layout style={{ height: "100vh" }}>
+          <Layout.Header style={{ background: "green" }}>header</Layout.Header>
+          <Layout.Content style={{ background: "blue" }}>content</Layout.Content>
+          <Layout.Footer style={{ background: "red" }}>footer</Layout.Footer>
 
-      {/* <Layout.Header>
-        <Menu
-          items={menuItems}
-          mode="horizontal"
-          theme="dark"
-          defaultSelectedKeys={[]}
-          onClick={handleClickItem}
-        />
-      </Layout.Header>
-      <Layout.Content>
-        <Routes>
-          <Route path="/drop-down" element={<DropDown />} />
-          <Route path="/paginations" element={<Paginations />} />
-          <Route path="/steps" element={<Steps />} />
-        </Routes>
-      </Layout.Content>
-      <Layout.Footer>footer</Layout.Footer> */}
-      <Layout.Header style={{ color: "#fff", textAlign: "center" }}>
-        My Awesome website
-      </Layout.Header>
-      <Layout>
-        <Layout.Sider>
+          <Layout.Sider
+            collapsible
+            collapsed={collapsed}
+            style={{ background: "blue" }}
+            trigger={<span>close</span>}
+          >
+            sider
+          </Layout.Sider>
+          <Layout>
+            <Layout.Header style={{ background: "green" }}>
+              header
+              <Button onClick={handleToggleCollapse}>Toggle Collapse</Button>
+            </Layout.Header>
+            <Layout.Content style={{ background: "red" }}>content</Layout.Content>
+            <Layout.Footer style={{ background: "orange" }}>footer</Layout.Footer>
+          </Layout>
+        </Layout> */}
+
+        {/* <Layout.Header>
           <Menu
             items={menuItems}
+            mode="horizontal"
             theme="dark"
+            defaultSelectedKeys={[]}
             onClick={handleClickItem}
-            defaultSelectedKeys={[pathname.slice(1)]}
           />
-        </Layout.Sider>
-        <Layout.Content style={{ padding: 10 }}>
-          <BreadCrumbs />
-          <React.Suspense fallback={<div><Spin /> loading...</div>}>
-            <Routes>
-              <Route path="/drop-down" element={<DropDown />} />
-              <Route path="/paginations" element={<Paginations />} />
-              <Route path="/steps" element={<Steps />} />
-              <Route path="/divider" element={<Divider />} />
-              <Route path="/auto-complete" element={<AutoComplete />} />
-              <Route path="/checkbox" element={<CheckBox />} />
-              <Route path="/code-splitting" element={<CodeSplitting />} />
-              <Route
-                path="/list-with-pagination"
-                element={<ListWithPagination />}
-              />
-            </Routes>
-
-          </React.Suspense>
+        </Layout.Header>
+        <Layout.Content>
+          <Routes>
+            <Route path="/drop-down" element={<DropDown />} />
+            <Route path="/paginations" element={<Paginations />} />
+            <Route path="/steps" element={<Steps />} />
+          </Routes>
         </Layout.Content>
+        <Layout.Footer>footer</Layout.Footer> */}
+        <Layout.Header style={{ color: "#fff", textAlign: "center" }}>
+          My Awesome website
+        </Layout.Header>
+        <Layout>
+          <Layout.Sider>
+            <Menu
+              items={menuItems}
+              theme="dark"
+              onClick={handleClickItem}
+              defaultSelectedKeys={[pathname.slice(1)]}
+            />
+          </Layout.Sider>
+          <Layout.Content style={{ padding: 10 }}>
+            <BreadCrumbs />
+            <React.Suspense fallback={<div><Spin /> loading...</div>}>
+              <Routes>
+                <Route path="/drop-down" element={<DropDown />} />
+                <Route path="/paginations" element={<Paginations />} />
+                <Route path="/steps" element={<Steps />} />
+                <Route path="/divider" element={<Divider />} />
+                <Route path="/auto-complete" element={<AutoComplete />} />
+                <Route path="/checkbox" element={<CheckBox />} />
+                <Route path="/code-splitting" element={<CodeSplitting />} />
+                <Route path="/users" element={<Users />} />
+                <Route
+                  path="/list-with-pagination"
+                  element={<ListWithPagination />}
+                />
+              </Routes>
+
+            </React.Suspense>
+          </Layout.Content>
+        </Layout>
+        <Layout.Footer>
+          This website is powered by <HeartFilled style={{ color: "pink" }} />{" "}
+          <span>&copy;</span> 2022
+        </Layout.Footer>
       </Layout>
-      <Layout.Footer>
-        This website is powered by <HeartFilled style={{ color: "pink" }} />{" "}
-        <span>&copy;</span> 2022
-      </Layout.Footer>
-    </Layout>
+    </Provider>
   );
 };
 
