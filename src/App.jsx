@@ -20,6 +20,8 @@ import AutoComplete from "./page/AutoComplete";
 import CheckBox from "./page/CheckBox";
 import Users from "./page/Users";
 import Animations from "./page/Animations";
+import Inputs from "./page/Inputs";
+import Form from "./page/Form";
 // Styles
 import "./app-style.css";
 // Store
@@ -28,7 +30,6 @@ import rootStore from "./store";
 import { GlobalStyle } from "./index.styles";
 // Themes
 import { appTheme } from "./theme";
-import Inputs from "./page/Inputs";
 
 const CodeSplitting = React.lazy(async () => {
   const module = await import("./page/CodeSplitting");
@@ -76,6 +77,7 @@ const App = () => {
                   <Route path="/users" element={<Users />} />
                   <Route path="/animations" element={<Animations />} />
                   <Route path="/inputs" element={<Inputs />} />
+                  <Route path="/form" element={<Form />} />
                   <Route
                     path="/list-with-pagination"
                     element={<ListWithPagination />}

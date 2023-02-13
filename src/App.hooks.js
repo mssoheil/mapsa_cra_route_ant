@@ -51,6 +51,10 @@ const menuItems = [
     key: "inputs",
     label: "Inputs",
   },
+  {
+    key: "form",
+    label: "Form",
+  },
 ];
 
 export function useApp() {
@@ -94,6 +98,9 @@ export function useApp() {
         break;
       case "inputs":
         navigate("/inputs");
+        break;
+      case "form":
+        navigate("/form");
         break;
       default:
         break;
