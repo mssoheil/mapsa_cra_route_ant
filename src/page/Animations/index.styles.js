@@ -17,6 +17,13 @@ export const StyledItem = styled(Button)`
   animation: ${rotation} 1.5s ease-in-out infinite;
 `;
 
-export const StyledSecondItem = styled(StyledItem)`
-  background: green;
+export const StyledSecondItem = styled(StyledItem)({
+  background: "green",
+});
+
+export const StyledText = styled.div`
+  color: #444;
+  ${StyledSecondItem}:hover {
+    background: red;
+  }
 `;

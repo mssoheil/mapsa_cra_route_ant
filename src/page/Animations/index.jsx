@@ -1,6 +1,6 @@
 import React from 'react'
 // Styles
-import { StyledItem, StyledSecondItem } from './index.styles'
+import { StyledItem, StyledSecondItem, StyledText } from './index.styles'
 
 const Animations = () => {
   return (
@@ -8,9 +8,12 @@ const Animations = () => {
         <StyledItem>
             Animated button
         </StyledItem>
+        <StyledText>
         <StyledSecondItem>
             2nd Animated button
         </StyledSecondItem>
+            Text
+        </StyledText>
     </div>
   )
 }
