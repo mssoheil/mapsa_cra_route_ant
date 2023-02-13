@@ -1,7 +1,7 @@
 import React from "react";
 // UI frameworks
 import { Button, Layout, Menu, Spin } from "antd";
-import { MenuUnfoldOutlined, HeartFilled } from "@ant-design/icons";
+import { HeartFilled } from "@ant-design/icons";
 import { Route, Routes } from "react-router";
 import { ThemeProvider } from "styled-components";
 // Components
@@ -9,7 +9,7 @@ import BreadCrumbs from "./components/BreadCrumbs";
 // Utilities
 import { Provider } from "react-redux";
 // Hooks
-import { useNavigate, useLocation } from "react-router";
+import { useApp } from "./App.hooks";
 // Pages
 import DropDown from "./page/DropDown";
 import Paginations from "./page/Paginations";
@@ -20,8 +20,6 @@ import AutoComplete from "./page/AutoComplete";
 import CheckBox from "./page/CheckBox";
 import Users from "./page/Users";
 import Animations from "./page/Animations";
-// Hooks
-import { useApp } from "./App.hooks";
 // Styles
 import "./app-style.css";
 // Store
@@ -30,6 +28,7 @@ import rootStore from "./store";
 import { GlobalStyle } from "./index.styles";
 // Themes
 import { appTheme } from "./theme";
+import Inputs from "./page/Inputs";
 
 const CodeSplitting = React.lazy(async () => {
   const module = await import("./page/CodeSplitting");
@@ -76,6 +75,7 @@ const App = () => {
                   <Route path="/code-splitting" element={<CodeSplitting />} />
                   <Route path="/users" element={<Users />} />
                   <Route path="/animations" element={<Animations />} />
+                  <Route path="/inputs" element={<Inputs />} />
                   <Route
                     path="/list-with-pagination"
                     element={<ListWithPagination />}
