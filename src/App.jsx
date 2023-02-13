@@ -30,6 +30,7 @@ import rootStore from "./store";
 import { GlobalStyle } from "./index.styles";
 // Themes
 import { appTheme } from "./theme";
+import Selects from "./page/Selects";
 
 const CodeSplitting = React.lazy(async () => {
   const module = await import("./page/CodeSplitting");
@@ -78,6 +79,7 @@ const App = () => {
                   <Route path="/animations" element={<Animations />} />
                   <Route path="/inputs" element={<Inputs />} />
                   <Route path="/form" element={<Form />} />
+                  <Route path="/selects" element={<Selects />} />
                   <Route
                     path="/list-with-pagination"
                     element={<ListWithPagination />}
