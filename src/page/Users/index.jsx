@@ -4,6 +4,8 @@ import React from "react";
 import { useSelector, useDispatch } from "react-redux";
 // Actions
 import UsersActions from "../../store/Users/users.actions";
+// Styles
+import { StyledList, StyledWrapper } from "./index.styles";
 
 const Users = () => {
   const usersStore = useSelector((state) => state.users);
@@ -25,15 +27,14 @@ const Users = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  console.log("Debug ~ Users ~ usersStore", usersStore);
 
   return (
-    <div>
+    <StyledWrapper $myBackground="cyan">
       Users:
       <br />
       <div>{usersStore.loading ? <Spin /> : <ul>
-        {usersStore.users.map(user => <li key={user.id}>{user.name}</li> )}</ul>}</div>
-    </div>
+        {usersStore.users.map((user, index) => <StyledList isActive={index === 2} key={user.id}>{user.name}</StyledList> )}<div className="y">hello</div></ul>}</div>
+    </StyledWrapper>
   );
 };
 

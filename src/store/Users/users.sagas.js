@@ -6,7 +6,7 @@ import * as types from "./users.constants";
 function* getUsers() {
   try {
     yield put(UsersActions.setLoading(true));
-    yield delay(2000);
+    // yield delay(2000);
     const response = yield fetch("https://jsonplaceholder.typicode.com/users");
     const data = yield response.json();
     yield put(UsersActions.handleUsers(data));
