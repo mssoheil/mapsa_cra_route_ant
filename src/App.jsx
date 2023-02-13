@@ -19,6 +19,7 @@ import ListWithPagination from "./page/ListWithPagination";
 import AutoComplete from "./page/AutoComplete";
 import CheckBox from "./page/CheckBox";
 import Users from "./page/Users";
+import Animations from "./page/Animations";
 // Styles
 import "./app-style.css";
 // Store
@@ -73,6 +74,10 @@ const menuItems = [
     key: "users",
     label: "Users",
   },
+  {
+    key: "animations",
+    label: "Animations",
+  },
 ];
 
 
@@ -112,6 +117,9 @@ const App = () => {
         break;
       case "users":
         navigate("/users");
+        break;
+      case "animations":
+        navigate("/animations");
         break;
       default:
         break;
@@ -156,6 +164,7 @@ const App = () => {
                   <Route path="/checkbox" element={<CheckBox />} />
                   <Route path="/code-splitting" element={<CodeSplitting />} />
                   <Route path="/users" element={<Users />} />
+                  <Route path="/animations" element={<Animations />} />
                   <Route
                     path="/list-with-pagination"
                     element={<ListWithPagination />}
