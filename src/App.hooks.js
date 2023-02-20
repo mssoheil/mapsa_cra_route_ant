@@ -59,6 +59,10 @@ const menuItems = [
     key: "selects",
     label: "Selects",
   },
+  {
+    key: "radios",
+    label: "Radios",
+  },
 ];
 
 export function useApp() {
@@ -108,6 +112,9 @@ export function useApp() {
         break;
       case "selects":
         navigate("/selects");
+        break;
+      case "radios":
+        navigate("/radios");
         break;
       default:
         break;
