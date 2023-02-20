@@ -25,6 +25,7 @@ import Form from "./page/Form";
 import Selects from "./page/Selects";
 import Radios from "./page/Radios";
 import CardPayment from "./page/CardPayment";
+import Tables from "./page/Tables";
 // Styles
 import "./app-style.css";
 // Store
@@ -84,6 +85,7 @@ const App = () => {
                   <Route path="/selects" element={<Selects />} />
                   <Route path="/radios" element={<Radios />} />
                   <Route path="/card-payment" element={<CardPayment />} />
+                  <Route path="/tables" element={<Tables />} />
                   <Route
                     path="/list-with-pagination"
                     element={<ListWithPagination />}

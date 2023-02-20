@@ -67,6 +67,10 @@ const menuItems = [
     key: "cardPayment",
     label: "Card Payment",
   },
+  {
+    key: "tables",
+    label: "Tables",
+  },
 ];
 
 export function useApp() {
@@ -122,6 +126,9 @@ export function useApp() {
         break;
       case "cardPayment":
         navigate("/card-payment");
+        break;
+      case "tables":
+        navigate("/tables");
         break;
       default:
         break;
