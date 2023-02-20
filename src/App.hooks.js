@@ -63,6 +63,10 @@ const menuItems = [
     key: "radios",
     label: "Radios",
   },
+  {
+    key: "cardPayment",
+    label: "Card Payment",
+  },
 ];
 
 export function useApp() {
@@ -115,6 +119,9 @@ export function useApp() {
         break;
       case "radios":
         navigate("/radios");
+        break;
+      case "cardPayment":
+        navigate("/card-payment");
         break;
       default:
         break;
